@@ -108,10 +108,20 @@ def _call_provider(prompt: str, provider: str) -> str:
     elif provider == "gemini":
         client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=prompt,
         )
         return response.text
 
+    elif provider == "groq":
+        from groq import Groq
+        client = Groq(api_key=os.environ["GROQ_API_KEY"])
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=2048,
+        )
+        return response.choices[0].message.content
+
     else:
-        raise ValueError(f"Unknown provider: {provider}. Use 'claude', 'openai', or 'gemini'.")
+        raise ValueError(f"Unknown provider: {provider}. Use 'claude', 'openai', 'gemini', or 'groq'.")

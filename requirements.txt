@@ -1,5 +1,4 @@
 yt-dlp
-openai-whisper
 anthropic
 openai
 python-dotenv
@@ -7,4 +6,5 @@ rich
 librosa
 numpy
 google-genai
+groq
 demucs

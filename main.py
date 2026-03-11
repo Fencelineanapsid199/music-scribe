@@ -8,11 +8,12 @@ load_dotenv()
 
 console = Console()
 
-PROVIDERS = ["claude", "openai", "gemini"]
+PROVIDERS = ["claude", "openai", "gemini", "groq"]
 API_KEY_MAP = {
     "claude": "ANTHROPIC_API_KEY",
     "openai": "OPENAI_API_KEY",
     "gemini": "GEMINI_API_KEY",
+    "groq": "GROQ_API_KEY",
 }
 
 
@@ -74,7 +75,8 @@ def process_song(url: str, provider: str, use_stems: bool = False) -> tuple[dict
 
     if not is_local:
         try:
-            os.remove(audio_path)
+            import shutil as _shutil
+            _shutil.rmtree(os.path.dirname(audio_path), ignore_errors=True)
         except Exception:
             pass
 

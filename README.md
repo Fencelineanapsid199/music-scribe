@@ -120,7 +120,7 @@ python main.py "URL" --output-dir ./my-analyses
 
 | Provider | Cost | Model | Notes |
 |----------|------|-------|-------|
-| `gemini` (default) | Free — 1,500 req/day | gemini-2.0-flash | Best starting point |
+| `gemini` (default) | Free — 250 req/day | gemini-2.5-flash | Best starting point |
 | `claude` | ~$0.01–0.02/song | claude-sonnet-4-6 | Best writing quality |
 | `openai` | ~$0.01–0.02/song | gpt-4o | Strong all-rounder |
 
